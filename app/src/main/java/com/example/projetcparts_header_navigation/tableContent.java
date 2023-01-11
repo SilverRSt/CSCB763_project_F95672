@@ -2,6 +2,7 @@ package com.example.projetcparts_header_navigation;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,52 +20,89 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class tableContent extends AppCompatActivity {
     private databaseHelper databaseHelper;
     private SQLiteDatabase database;
     private final ViewGroup.LayoutParams tableRowDataParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
-    private static final String TEST_DATA = "test";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.table_content);
         this.databaseHelper = new databaseHelper(this);
-        //this.database = databaseHelper.getWritableDatabase();
+        this.database = databaseHelper.getWritableDatabase();
 
-        int tableSize = 0;
+        //populate database with pre-made values
+        this.databaseHelper.populateTable();
+
+        //set database size
+        this.databaseHelper.setSize();
+
+        //get database size
+        // CAN CALL LIST SIZE SAME THING
+//        int tableSize = (int) this.databaseHelper.getSize();
+
 
         TableLayout tableLayout = (TableLayout) findViewById(R.id.table_data);
-        this.generateRows(tableLayout, 3);
-
+        this.generateRows(tableLayout);
     }
 
-    public void generateRows(TableLayout tableLayout, final int tableSize) {
-        for (int i = 0; i < tableSize; i++) {
+    public void generateRows(TableLayout tableLayout) {
+        //get list of all rows from database
+        List<Cloth> cloths = this.databaseHelper.getAllClothes();
+
+        for (Cloth cloth : cloths) {
             TableRow row = new TableRow(this);
             row.setBackgroundColor(ContextCompat.getColor(this, R.color.tableContent));
             row.setPadding(13, 13, 13, 13);
 
+            TextView type = new TextView(this);
+            type.setText(cloth.getType());
+            type.setLayoutParams(this.tableRowDataParams);
 
-            TextView one = new TextView(this);
-            one.setText(TEST_DATA);
-            one.setLayoutParams(this.tableRowDataParams);
+            TextView brand = new TextView(this);
+            brand.setText(cloth.getBrand());
+            brand.setLayoutParams(this.tableRowDataParams);
 
-            TextView two = new TextView(this);
-            two.setText(TEST_DATA);
-            two.setLayoutParams(tableRowDataParams);
+            TextView quantity = new TextView(this);
+            quantity.setText(String.valueOf(cloth.getQuantity()));
+            quantity.setLayoutParams(this.tableRowDataParams);
 
-            TextView three = new TextView(this);
-            three.setText(TEST_DATA);
-            three.setLayoutParams(tableRowDataParams);
-
-
-            row.addView(one);
-            row.addView(two);
-            row.addView(three);
+            row.addView(type);
+            row.addView(brand);
+            row.addView(quantity);
 
             tableLayout.addView(row, new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
+
+//        for (int i = 0; i < this.cloths.size(); i++) {
+//            TableRow row = new TableRow(this);
+//            row.setBackgroundColor(ContextCompat.getColor(this, R.color.tableContent));
+//            row.setPadding(13, 13, 13, 13);
+//
+//
+//            TextView one = new TextView(this);
+//            one.setText(TEST_DATA);
+//            one.setLayoutParams(this.tableRowDataParams);
+//
+//            TextView two = new TextView(this);
+//            two.setText(TEST_DATA);
+//            two.setLayoutParams(tableRowDataParams);
+//
+//            TextView three = new TextView(this);
+//            three.setText(TEST_DATA);
+//            three.setLayoutParams(tableRowDataParams);
+//
+//
+//            row.addView(one);
+//            row.addView(two);
+//            row.addView(three);
+//
+//            tableLayout.addView(row, new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+//        }
     }
 
     @Override
