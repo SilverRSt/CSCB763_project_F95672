@@ -36,82 +36,82 @@
     </TableRow>
 
 
-    <TableRow android:background="@color/tableContent"
-        android:padding="13dp"
-        android:layout_marginVertical="1dp">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="X"
-            android:layout_weight="1"
-            android:textSize="15sp">
-        </TextView>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="X"
-            android:layout_weight="1"
-            android:textSize="15sp">
-        </TextView>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="X"
-            android:layout_weight="1"
-            android:textSize="15sp">
-        </TextView>
-    </TableRow>
+<!--    <TableRow android:background="@color/tableContent"-->
+<!--        android:padding="13dp"-->
+<!--        android:layout_marginVertical="1dp">-->
+<!--        <TextView-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:text="X"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="15sp">-->
+<!--        </TextView>-->
+<!--        <TextView-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:text="X"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="15sp">-->
+<!--        </TextView>-->
+<!--        <TextView-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:text="X"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="15sp">-->
+<!--        </TextView>-->
+<!--    </TableRow>-->
 
-    <TableRow android:background="@color/tableContent"
-        android:padding="13dp"
-        android:layout_marginVertical="1dp">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Y"
-            android:layout_weight="1"
-            android:textSize="15sp">
-        </TextView>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Y"
-            android:layout_weight="1"
-            android:textSize="15sp">
-        </TextView>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Y"
-            android:layout_weight="1"
-            android:textSize="15sp">
-        </TextView>
-    </TableRow>
+<!--    <TableRow android:background="@color/tableContent"-->
+<!--        android:padding="13dp"-->
+<!--        android:layout_marginVertical="1dp">-->
+<!--        <TextView-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:text="Y"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="15sp">-->
+<!--        </TextView>-->
+<!--        <TextView-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:text="Y"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="15sp">-->
+<!--        </TextView>-->
+<!--        <TextView-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:text="Y"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="15sp">-->
+<!--        </TextView>-->
+<!--    </TableRow>-->
 
-    <TableRow android:background="@color/tableContent"
-        android:padding="13dp"
-        android:layout_marginVertical="1dp">
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Z"
-            android:layout_weight="1"
-            android:textSize="15sp">
-        </TextView>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Z"
-            android:layout_weight="1"
-            android:textSize="15sp">
-        </TextView><TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="Z"
-        android:layout_weight="1"
-        android:textSize="15sp">
-    </TextView>
+<!--    <TableRow android:background="@color/tableContent"-->
+<!--        android:padding="13dp"-->
+<!--        android:layout_marginVertical="1dp">-->
+<!--        <TextView-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:text="Z"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="15sp">-->
+<!--        </TextView>-->
+<!--        <TextView-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:text="Z"-->
+<!--            android:layout_weight="1"-->
+<!--            android:textSize="15sp">-->
+<!--        </TextView><TextView-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:text="Z"-->
+<!--        android:layout_weight="1"-->
+<!--        android:textSize="15sp">-->
+<!--    </TextView>-->
 
-    </TableRow>
+<!--    </TableRow>-->
 
 </TableLayout>
