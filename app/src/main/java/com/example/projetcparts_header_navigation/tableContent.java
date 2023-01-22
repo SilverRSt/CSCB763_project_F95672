@@ -1,11 +1,8 @@
 package com.example.projetcparts_header_navigation;
 
 import android.content.Intent;
-import android.content.res.Resources;
-import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -21,12 +18,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.Fragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class tableContent extends AppCompatActivity {
-    private Button addButton;
+    private Fragment addItemFragment = new AddItemFragment();
+    private Button addButton; //open fragment -> form for adding items
+    private Button closeButton;
     private databaseHelper databaseHelper;
     private SQLiteDatabase database;
     private final ViewGroup.LayoutParams tableRowDataParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
@@ -60,10 +59,20 @@ public class tableContent extends AppCompatActivity {
         this.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "Button clicked", Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getApplicationContext(), "Button clicked", Toast.LENGTH_SHORT).show();
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_id, addItemFragment).commit();
             }
         });
+    }
 
+    private void setUpCloseButton() {
+        this.closeButton = findViewById(R.id.back_id);
+        this.closeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                getSupportFragmentManager().beginTransaction().remove(addItemFragment).commit();
+            }
+        });
     }
 
     public void generateRows(TableLayout tableLayout) {

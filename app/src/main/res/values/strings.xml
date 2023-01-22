@@ -5,4 +5,12 @@
     <string name="tableRowName">Name</string>
     <string name="tableRowBrand">Brand</string>
     <string name="tableRowQuantity">Quantity</string>
+    <string name="addItemTitle">Add New Item</string>
+    <string name="itemNameHint"><i>Item Name</i></string>
+    <string name="itemBrandHint"><i>Item brand</i></string>
+    <string name="setQuantityHint"><i>Set quantity</i></string>
+    <string name="buttonBack">back</string>
+    <string name="create">Create</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

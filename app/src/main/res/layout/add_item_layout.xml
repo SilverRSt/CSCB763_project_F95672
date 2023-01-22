@@ -1,6 +1,78 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:id="@+id/title_id"
+        android:text="@string/addItemTitle"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textAllCaps="true">
+    </TextView>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/item_name_id"
+        android:hint="@string/itemNameHint">
+    </EditText>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="180dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/item_brand_id"
+        android:hint="@string/itemBrandHint">
+    </EditText>
+
+    <EditText
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_marginTop="260dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/item_quantity_id"
+        android:hint="@string/setQuantityHint"
+        android:inputType="number">
+    </EditText>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/button_layout_id"
+        android:gravity="bottom">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/back_id"
+            android:text="@string/buttonBack"
+            android:padding="15dp"
+            android:textStyle="bold"
+            android:layout_marginStart="20dp"
+            android:layout_alignParentStart="true">
+        </Button>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/create_id"
+            android:text="@string/create"
+            android:padding="15dp"
+            android:textStyle="bold"
+            android:layout_marginEnd="20dp"
+            android:layout_alignParentEnd="true">
+        </Button>
+
+    </RelativeLayout>
+
+</RelativeLayout>
