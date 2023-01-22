@@ -9,7 +9,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -24,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class tableContent extends AppCompatActivity {
+    private Button addButton;
     private databaseHelper databaseHelper;
     private SQLiteDatabase database;
     private final ViewGroup.LayoutParams tableRowDataParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
@@ -32,8 +35,10 @@ public class tableContent extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.table_content);
+
         this.databaseHelper = new databaseHelper(this);
         this.database = databaseHelper.getWritableDatabase();
+        this.setUpAddButton();
 
         //populate database with pre-made values
         this.databaseHelper.populateTable();
@@ -48,6 +53,17 @@ public class tableContent extends AppCompatActivity {
 
         TableLayout tableLayout = (TableLayout) findViewById(R.id.table_data);
         this.generateRows(tableLayout);
+    }
+
+    private void setUpAddButton() {
+        this.addButton = findViewById(R.id.add_id);
+        this.addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "Button clicked", Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
 
     public void generateRows(TableLayout tableLayout) {

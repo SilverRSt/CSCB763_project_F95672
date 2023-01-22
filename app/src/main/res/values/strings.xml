@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">projetcParts_HEADER_NAVIGATION</string>
     <string name="rowDataTest">one</string>
+    <string name="addItemButtonText">add item</string>
+    <string name="tableRowName">Name</string>
+    <string name="tableRowBrand">Brand</string>
+    <string name="tableRowQuantity">Quantity</string>
 </resources>

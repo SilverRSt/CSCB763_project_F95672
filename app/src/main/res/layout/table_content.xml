@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/table_data"
     android:layout_width="fill_parent"
@@ -8,12 +9,18 @@
     android:layout_marginHorizontal="15dp"
     android:background="@color/tableHeader">
 
+    <Button
+        android:id="@+id/add_id"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="@string/addItemButtonText" />
+
     <TableRow android:padding="13dp">
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:text="Name"
+            android:text="@string/tableRowName"
             android:textSize="15sp"
             android:textStyle="bold">
         </TextView>
@@ -21,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:text="Brand"
+            android:text="@string/tableRowBrand"
             android:textSize="15sp"
             android:textStyle="bold">
         </TextView>
@@ -29,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
             android:layout_weight="1"
-            android:text="Quantity"
+            android:text="@string/tableRowQuantity"
             android:textSize="15sp"
             android:textStyle="bold">
         </TextView>
