@@ -59,18 +59,7 @@ public class tableContent extends AppCompatActivity {
         this.addButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(), "Button clicked", Toast.LENGTH_SHORT).show();
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_id, addItemFragment).commit();
-            }
-        });
-    }
-
-    private void setUpCloseButton() {
-        this.closeButton = findViewById(R.id.back_id);
-        this.closeButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().remove(addItemFragment).commit();
             }
         });
     }
@@ -102,32 +91,6 @@ public class tableContent extends AppCompatActivity {
 
             tableLayout.addView(row, new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }
-
-//        for (int i = 0; i < this.cloths.size(); i++) {
-//            TableRow row = new TableRow(this);
-//            row.setBackgroundColor(ContextCompat.getColor(this, R.color.tableContent));
-//            row.setPadding(13, 13, 13, 13);
-//
-//
-//            TextView one = new TextView(this);
-//            one.setText(TEST_DATA);
-//            one.setLayoutParams(this.tableRowDataParams);
-//
-//            TextView two = new TextView(this);
-//            two.setText(TEST_DATA);
-//            two.setLayoutParams(tableRowDataParams);
-//
-//            TextView three = new TextView(this);
-//            three.setText(TEST_DATA);
-//            three.setLayoutParams(tableRowDataParams);
-//
-//
-//            row.addView(one);
-//            row.addView(two);
-//            row.addView(three);
-//
-//            tableLayout.addView(row, new TableLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
-//        }
     }
 
     @Override
