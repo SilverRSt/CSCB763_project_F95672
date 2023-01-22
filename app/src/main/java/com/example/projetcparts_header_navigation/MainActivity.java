@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -39,11 +38,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onClick(View view) {
-        if(view == this.button && !this.isMyServiceRunning(musicService.class)) {
-            startService(new Intent(this, musicService.class));
+        if(view == this.button && !this.isMyServiceRunning(MusicService.class)) {
+            startService(new Intent(this, MusicService.class));
 
-        } else if(view == this.button && this.isMyServiceRunning(musicService.class)){
-            stopService(new Intent(this, musicService.class));
+        } else if(view == this.button && this.isMyServiceRunning(MusicService.class)){
+            stopService(new Intent(this, MusicService.class));
         }
     }
 
@@ -62,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         Intent activityToStart;
 
         if(item.getItemId() == R.id.itemOne) {
-            activityToStart = new Intent(this, tableContent.class);
+            activityToStart = new Intent(this, TableContent.class);
             startActivity(activityToStart);
             return true;
 

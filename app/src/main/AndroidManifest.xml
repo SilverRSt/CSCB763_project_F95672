@@ -26,10 +26,10 @@
         </activity>
 
         <activity
-            android:name=".tableContent" >
+            android:name=".TableContent" >
         </activity>
 
-        <service android:name=".musicService"/>
+        <service android:name=".MusicService"/>
     </application>
 
 </manifest>

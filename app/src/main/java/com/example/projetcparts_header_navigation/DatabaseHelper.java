@@ -3,7 +3,6 @@ package com.example.projetcparts_header_navigation;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorWrapper;
 import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -11,7 +10,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
-public class databaseHelper extends SQLiteOpenHelper {
+public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "android_app";
 
     private static final int DATABASE_VERSION = 1;
@@ -29,7 +28,7 @@ public class databaseHelper extends SQLiteOpenHelper {
     private long size;
 
 
-    public databaseHelper(Context context) {
+    public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -41,22 +40,20 @@ public class databaseHelper extends SQLiteOpenHelper {
                 + COLUMN_BRAND + " TEXT NOT NULL, "
                 + COLUMN_QUAN + "quantity INTEGER NOT NULL);";
         db.execSQL(sql);
-
-        //populateTable();
-//        this.setSize();
     }
 
+    //set up start up values -> comment out on view after
     public void populateTable() {
         this.emptyTable();
-        SQLiteDatabase database = this.getWritableDatabase();
+//        SQLiteDatabase database = this.getWritableDatabase();
 
-        this.addItem(database, "T-shirt", "Adidas", 14);
-        this.addItem(database, "Shoes", "Adidas", 32);
-        this.addItem(database, "Shoes", "Nike", 13);
-        this.addItem(database, "Sweatshirt", "Apple", 3);
-        this.addItem(database, "Skirt", "Apple", 44);
-        this.addItem(database, "Skirt", "FENWICK", 6);
-        this.addItem(database, "Dress", "VISME", 21);
+        this.addItem("T-shirt", "Adidas", 14);
+        this.addItem("Shoes", "Adidas", 32);
+        this.addItem("Shoes", "Nike", 13);
+        this.addItem("Sweatshirt", "Apple", 3);
+        this.addItem("Skirt", "Apple", 44);
+        this.addItem("Skirt", "FENWICK", 6);
+        this.addItem("Dress", "VISME", 21);
 
         //database.close();
     }
@@ -81,7 +78,9 @@ public class databaseHelper extends SQLiteOpenHelper {
         return cloths;
     }
 
-    private void addItem(SQLiteDatabase database, String type, String brand, int quan) {
+    public void addItem(String type, String brand, int quan) {
+        SQLiteDatabase database = this.getWritableDatabase();
+
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_CLOTHES, type);

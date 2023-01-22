@@ -22,11 +22,11 @@ import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
-public class tableContent extends AppCompatActivity {
+public class TableContent extends AppCompatActivity {
     private Fragment addItemFragment = new AddItemFragment();
     private Button addButton; //open fragment -> form for adding items
     private Button closeButton;
-    private databaseHelper databaseHelper;
+    private DatabaseHelper databaseHelper;
     private SQLiteDatabase database;
     private final ViewGroup.LayoutParams tableRowDataParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
 
@@ -35,20 +35,15 @@ public class tableContent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.table_content);
 
-        this.databaseHelper = new databaseHelper(this);
+        this.databaseHelper = new DatabaseHelper(this);
         this.database = databaseHelper.getWritableDatabase();
         this.setUpAddButton();
 
-        //populate database with pre-made values
-        this.databaseHelper.populateTable();
+        //populate database with pre-made/default values
+        //this.databaseHelper.populateTable();
 
         //set database size
         this.databaseHelper.setSize();
-
-        //get database size
-        // CAN CALL LIST SIZE SAME THING
-//        int tableSize = (int) this.databaseHelper.getSize();
-
 
         TableLayout tableLayout = (TableLayout) findViewById(R.id.table_data);
         this.generateRows(tableLayout);
