@@ -7,6 +7,9 @@ import android.os.IBinder;
 
 import androidx.annotation.Nullable;
 
+/**
+ * Music service.
+ */
 public class MusicService extends Service {
     private MediaPlayer player;
 
@@ -17,6 +20,9 @@ public class MusicService extends Service {
     }
 
 
+    /**
+     * Get service by id, set it to loop and start it.
+     */
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
         this.player = MediaPlayer.create(this, R.raw.button_music);
@@ -27,7 +33,9 @@ public class MusicService extends Service {
     }
 
 
-
+    /**
+     * Stop the service.
+     */
     @Override
     public void onDestroy() {
         player.stop();

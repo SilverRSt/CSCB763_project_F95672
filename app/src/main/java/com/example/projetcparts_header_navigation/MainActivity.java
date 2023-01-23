@@ -14,6 +14,9 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+/**
+ * Main activity - main/home page
+ */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private ImageButton button;
 
@@ -25,6 +28,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         this.button.setOnClickListener(this);
     }
 
+    /**
+     * Check if the service (MusicPlayer) is currently running
+     * @param serviceClass
+     *          the service to be check if its running
+     * @return
+     *          true if running, false if not running
+     */
     private boolean isMyServiceRunning(Class<?> serviceClass) {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
@@ -36,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
+    /**
+     * Handle logic for music button.
+     * On first click start music from then every other stop then start based on if the service is running already.
+     */
     @Override
     public void onClick(View view) {
         if(view == this.button && !this.isMyServiceRunning(MusicService.class)) {
@@ -47,7 +61,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
 
-
+    /**
+     * Create the option menu.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -56,6 +72,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return super.onCreateOptionsMenu(menu);
     }
 
+
+    /**
+     * Handle on selection from menu where to take or display based on option chosen from MenuItem.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent activityToStart;
@@ -72,7 +92,5 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         } else {
             return super.onOptionsItemSelected(item);
         }
-
     }
-
 }

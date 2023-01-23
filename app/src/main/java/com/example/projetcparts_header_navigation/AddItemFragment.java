@@ -11,6 +11,9 @@ import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
 
+/**
+ * Fragment for poping up after add item has been clicked from the TableContent activity
+ */
 public class AddItemFragment extends Fragment {
     private DatabaseHelper database;
 
@@ -22,13 +25,14 @@ public class AddItemFragment extends Fragment {
         View view = inflater.inflate(R.layout.add_item_layout, container, false);
         this.database = new DatabaseHelper(getActivity());
 
+        //button for closing the fragment
         Button closeFragment = view.findViewById(R.id.back_id);
         closeFragment.setOnClickListener(v ->
                 getFragmentManager()
                         .beginTransaction()
                         .remove(AddItemFragment.this).commit());
 
-
+        //button for submit form -> get data from user and pass it onto database to insert as new item
         Button submitForm = view.findViewById(R.id.create_id);
         submitForm.setOnClickListener(v -> {
             EditText itemName = (EditText) getView().findViewById(R.id.item_name_id);

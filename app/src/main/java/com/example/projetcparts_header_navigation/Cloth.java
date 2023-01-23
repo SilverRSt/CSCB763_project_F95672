@@ -1,5 +1,8 @@
 package com.example.projetcparts_header_navigation;
 
+/**
+ * Entity Cloth for the database
+ */
 public class Cloth {
     private String type;
     private String brand;

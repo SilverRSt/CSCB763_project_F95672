@@ -22,6 +22,9 @@ import androidx.fragment.app.Fragment;
 
 import java.util.List;
 
+/**
+ * Table content Activity
+ */
 public class TableContent extends AppCompatActivity {
     private Fragment addItemFragment = new AddItemFragment();
     private Button addButton; //open fragment -> form for adding items
@@ -35,6 +38,7 @@ public class TableContent extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.table_content);
 
+        //create database
         this.databaseHelper = new DatabaseHelper(this);
         this.database = databaseHelper.getWritableDatabase();
         this.setUpAddButton();
@@ -49,6 +53,10 @@ public class TableContent extends AppCompatActivity {
         this.generateRows(tableLayout);
     }
 
+    /**
+     * Set up add buttons behavior when clicked.
+     * Set behaviour of button to show fragment for adding new item to database.
+     */
     private void setUpAddButton() {
         this.addButton = findViewById(R.id.add_id);
         this.addButton.setOnClickListener(new View.OnClickListener() {
@@ -59,6 +67,11 @@ public class TableContent extends AppCompatActivity {
         });
     }
 
+    /**
+     * Generate the rows of the table to be shown.
+     * @param tableLayout
+     *          table layout
+     */
     public void generateRows(TableLayout tableLayout) {
         //get list of all rows from database
         List<Cloth> cloths = this.databaseHelper.getAllClothes();
@@ -88,6 +101,9 @@ public class TableContent extends AppCompatActivity {
         }
     }
 
+    /**
+     * Create the option menu.
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
@@ -96,6 +112,9 @@ public class TableContent extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    /**
+     * Handle on selection from menu where to take or display based on option chosen from MenuItem.
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         Intent activityToStart;
@@ -114,6 +133,9 @@ public class TableContent extends AppCompatActivity {
         }
     }
 
+    /**
+     * Destroy database
+     */
     @Override
     protected void onDestroy() {
         this.database.close();

@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Database helper
+ */
 public class DatabaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "android_app";
 
@@ -32,6 +35,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    /**
+     * Create the table for the database on first call.
+     * @param db
+     *          the database
+     */
     @Override
     public void onCreate(SQLiteDatabase db) {
         String sql = "CREATE TABLE " + TABLE_NAME + " ("
@@ -42,10 +50,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         db.execSQL(sql);
     }
 
-    //set up start up values -> comment out on view after
+    /**
+     * Empty table and then set up default values for the database.
+     */
     public void populateTable() {
         this.emptyTable();
-//        SQLiteDatabase database = this.getWritableDatabase();
 
         this.addItem("T-shirt", "Adidas", 14);
         this.addItem("Shoes", "Adidas", 32);
@@ -54,10 +63,13 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         this.addItem("Skirt", "Apple", 44);
         this.addItem("Skirt", "FENWICK", 6);
         this.addItem("Dress", "VISME", 21);
-
-        //database.close();
     }
 
+    /**
+     * Get an array list with all items in the table clothes.
+     * @return
+     *      Array List with all clothes from the database.
+     */
     public List<Cloth> getAllClothes() {
         List<Cloth> cloths = new ArrayList<>();
 
@@ -78,6 +90,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return cloths;
     }
 
+    /**
+     * Add new item to the table
+     * @param type
+     *          type of item
+     * @param brand
+     *          brand of item
+     * @param quan
+     *          quantity of item
+     */
     public void addItem(String type, String brand, int quan) {
         SQLiteDatabase database = this.getWritableDatabase();
 
@@ -90,6 +111,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         database.insert(TABLE_NAME, null, values);
     }
 
+    /**
+     * Get the size of the database and set in in variable size
+     */
     public void setSize() {
         SQLiteDatabase database = this.getWritableDatabase();
         this.size =  DatabaseUtils.queryNumEntries(database, TABLE_NAME);
@@ -104,6 +128,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return size;
     }
 
+    /**
+     * Empty table clothes
+     */
     private void emptyTable() {
         SQLiteDatabase database = this.getWritableDatabase();
         database.execSQL("delete from " + TABLE_NAME);
