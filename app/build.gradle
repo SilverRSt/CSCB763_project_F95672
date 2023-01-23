@@ -8,6 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.projetcparts_header_navigation"
+//        applicationId "com.example.CSCB763_project_F95672"
         minSdk 33
         targetSdk 33
         versionCode 1

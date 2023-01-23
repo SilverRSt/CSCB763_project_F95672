@@ -5,10 +5,6 @@
         android:title="Clothes"
         app:showAsAction="never" />
 
-    <item android:id="@+id/itemTwo"
-        android:title="Else"
-        app:showAsAction="never" />
-
     <item android:id="@+id/itemThree"
         android:title="Home"
         app:showAsAction="never"
