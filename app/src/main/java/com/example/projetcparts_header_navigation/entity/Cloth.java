@@ -1,4 +1,4 @@
-package com.example.projetcparts_header_navigation;
+package com.example.projetcparts_header_navigation.entity;
 
 /**
  * Entity Cloth for the database

@@ -20,6 +20,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.projetcparts_header_navigation.database.DatabaseHelper;
+import com.example.projetcparts_header_navigation.entity.Cloth;
+import com.example.projetcparts_header_navigation.fragments.AddItemFragment;
+
 import java.util.List;
 
 /**
@@ -28,7 +32,6 @@ import java.util.List;
 public class TableContent extends AppCompatActivity {
     private Fragment addItemFragment = new AddItemFragment();
     private Button addButton; //open fragment -> form for adding items
-    private Button closeButton;
     private DatabaseHelper databaseHelper;
     private SQLiteDatabase database;
     private final ViewGroup.LayoutParams tableRowDataParams = new TableRow.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT, 1);
@@ -37,11 +40,12 @@ public class TableContent extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.table_content);
+        this.setUpAddButton();
 
         //create database
         this.databaseHelper = new DatabaseHelper(this);
-        this.database = databaseHelper.getWritableDatabase();
-        this.setUpAddButton();
+        //get database for reading and writing
+        this.database = this.databaseHelper.getWritableDatabase();
 
         //populate database with pre-made/default values
         //this.databaseHelper.populateTable();
@@ -49,7 +53,7 @@ public class TableContent extends AppCompatActivity {
         //set database size
         this.databaseHelper.setSize();
 
-        TableLayout tableLayout = (TableLayout) findViewById(R.id.table_data);
+        TableLayout tableLayout = findViewById(R.id.table_data);
         this.generateRows(tableLayout);
     }
 
@@ -134,13 +138,12 @@ public class TableContent extends AppCompatActivity {
     }
 
     /**
-     * Destroy database
+     * Destroy database connection
      */
     @Override
     protected void onDestroy() {
         this.database.close();
         this.databaseHelper.close();
-
         super.onDestroy();
     }
 }

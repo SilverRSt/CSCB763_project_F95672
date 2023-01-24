@@ -1,7 +1,6 @@
-package com.example.projetcparts_header_navigation;
+package com.example.projetcparts_header_navigation.fragments;
 
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.projetcparts_header_navigation.database.DatabaseHelper;
+import com.example.projetcparts_header_navigation.R;
+import com.example.projetcparts_header_navigation.TableContent;
 
 /**
  * Fragment for poping up after add item has been clicked from the TableContent activity

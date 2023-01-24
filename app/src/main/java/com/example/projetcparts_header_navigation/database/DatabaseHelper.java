@@ -1,4 +1,4 @@
-package com.example.projetcparts_header_navigation;
+package com.example.projetcparts_header_navigation.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -7,6 +7,8 @@ import android.database.DatabaseUtils;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.projetcparts_header_navigation.entity.Cloth;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,7 @@ import java.util.List;
  * Database helper
  */
 public class DatabaseHelper extends SQLiteOpenHelper {
-    private static final String DATABASE_NAME = "android_app";
+    private static final String DATABASE_NAME = "android_app.db";
 
     private static final int DATABASE_VERSION = 1;
 
@@ -46,7 +48,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_CLOTHES + " TEXT NOT NULL, "
                 + COLUMN_BRAND + " TEXT NOT NULL, "
-                + COLUMN_QUAN + "quantity INTEGER NOT NULL);";
+                + COLUMN_QUAN + " INTEGER NOT NULL);";
         db.execSQL(sql);
     }
 
@@ -101,7 +103,6 @@ public class DatabaseHelper extends SQLiteOpenHelper {
      */
     public void addItem(String type, String brand, int quan) {
         SQLiteDatabase database = this.getWritableDatabase();
-
         ContentValues values = new ContentValues();
 
         values.put(COLUMN_CLOTHES, type);
@@ -121,7 +122,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+        this.onCreate(db);
     }
 
     public long getSize() {
