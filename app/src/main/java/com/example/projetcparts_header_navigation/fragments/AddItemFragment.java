@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -38,24 +39,31 @@ public class AddItemFragment extends Fragment {
         //button for submit form -> get data from user and pass it onto database to insert as new item
         Button submitForm = view.findViewById(R.id.create_id);
         submitForm.setOnClickListener(v -> {
-            EditText itemName = (EditText) getView().findViewById(R.id.item_name_id);
+            EditText itemName = getView().findViewById(R.id.item_name_id);
             String name = itemName.getText().toString();
 
-            EditText itemBrand = (EditText)getView().findViewById(R.id.item_brand_id);
+            EditText itemBrand = getView().findViewById(R.id.item_brand_id);
             String brand = itemBrand.getText().toString();
 
-            EditText itemQuantity = (EditText)getView().findViewById(R.id.item_quantity_id);
-            int quantity = Integer.parseInt(itemQuantity.getText().toString());
+            EditText itemQuantity = getView().findViewById(R.id.item_quantity_id);
 
-            database.addItem(name, brand, quantity);
+            if(name.trim().isEmpty() || brand.trim().isEmpty() || itemQuantity.getText().toString().trim().isEmpty()) {
+                Toast.makeText(getActivity(), "Please fill in all fields!", Toast.LENGTH_SHORT).show();
 
-            Intent intent = new Intent(getActivity(), TableContent.class);
-            startActivity(intent);
+            } else {
+                int quantity = Integer.parseInt(itemQuantity.getText().toString());
+                database.addItem(name, brand, quantity);
+
+                Intent intent = new Intent(getActivity(), TableContent.class);
+                startActivity(intent);
+            }
         });
 
 
         return view;
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
