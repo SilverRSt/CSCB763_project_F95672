@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<RelativeLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:scrollbars="none">
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+<TableLayout
     android:id="@+id/table_data"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:layout_marginVertical="25dp"
     android:layout_marginHorizontal="15dp"
     android:background="@color/tableHeader">
-
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/fragment_id">
-    </FrameLayout>
 
     <Button
         android:id="@+id/add_id"
@@ -47,83 +53,16 @@
             android:textStyle="bold">
         </TextView>
     </TableRow>
-
-<!--    <TableRow android:background="@color/tableContent"-->
-<!--        android:padding="13dp"-->
-<!--        android:layout_marginVertical="1dp">-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:text="X"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textSize="15sp">-->
-<!--        </TextView>-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:text="X"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textSize="15sp">-->
-<!--        </TextView>-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:text="X"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textSize="15sp">-->
-<!--        </TextView>-->
-<!--    </TableRow>-->
-
-<!--    <TableRow android:background="@color/tableContent"-->
-<!--        android:padding="13dp"-->
-<!--        android:layout_marginVertical="1dp">-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:text="Y"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textSize="15sp">-->
-<!--        </TextView>-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:text="Y"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textSize="15sp">-->
-<!--        </TextView>-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:text="Y"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textSize="15sp">-->
-<!--        </TextView>-->
-<!--    </TableRow>-->
-
-<!--    <TableRow android:background="@color/tableContent"-->
-<!--        android:padding="13dp"-->
-<!--        android:layout_marginVertical="1dp">-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:text="Z"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textSize="15sp">-->
-<!--        </TextView>-->
-<!--        <TextView-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:text="Z"-->
-<!--            android:layout_weight="1"-->
-<!--            android:textSize="15sp">-->
-<!--        </TextView><TextView-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:text="Z"-->
-<!--        android:layout_weight="1"-->
-<!--        android:textSize="15sp">-->
-<!--    </TextView>-->
-
-<!--    </TableRow>-->
-
 </TableLayout>
+
+</LinearLayout>
+</ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/fragmentBackground"
+        android:id="@+id/fragment_id">
+    </FrameLayout>
+
+</RelativeLayout>
