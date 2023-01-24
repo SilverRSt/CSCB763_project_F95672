@@ -53,18 +53,25 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
     /**
-     * Empty table and then set up default values for the database.
+     * Empty table and then set up default values for the database to test scroll.
      */
     public void populateTable() {
-        this.emptyTable();
-
         this.addItem("T-shirt", "Adidas", 14);
         this.addItem("Shoes", "Adidas", 32);
         this.addItem("Shoes", "Nike", 13);
         this.addItem("Sweatshirt", "Apple", 3);
         this.addItem("Skirt", "Apple", 44);
         this.addItem("Skirt", "FENWICK", 6);
-        this.addItem("Dress", "VISME", 21);
+        this.addItem("Shoes", "Apple", 21);
+        this.addItem("Shoes", "VISME", 60);
+        this.addItem("Sweatshirt", "Adidas", 120);
+        this.addItem("Sweatshirt", "Adidas", 45);
+        this.addItem("Dress", "Nike", 23);
+        this.addItem("Shoes", "Apple", 32);
+        this.addItem("shirt", "Nike", 55);
+        this.addItem("shirt", "Nike", 53);
+        this.addItem("Dress", "Nike", 24);
+        this.addItem("Dress", "Nike", 3);
     }
 
     /**
