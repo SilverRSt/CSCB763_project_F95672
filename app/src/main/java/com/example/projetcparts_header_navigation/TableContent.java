@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TableLayout;
@@ -63,12 +62,7 @@ public class TableContent extends AppCompatActivity {
      */
     private void setUpAddButton() {
         this.addButton = findViewById(R.id.add_id);
-        this.addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_id, addItemFragment).commit();
-            }
-        });
+        this.addButton.setOnClickListener(v -> getSupportFragmentManager().beginTransaction().replace(R.id.fragment_id, addItemFragment).commit());
     }
 
     /**

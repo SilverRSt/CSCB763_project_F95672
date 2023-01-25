@@ -66,11 +66,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * Separate data from json list into only needed parts.
+     */
     private void separateJsonData() {
         String fullDate = this.apiValues.get(5);
         this.date = fullDate.split("T")[0].substring(1);
-
-        //int weekNumber = Integer.parseInt(String.valueOf(this.apiValues.get(29).charAt(1)));
         int weekNumber = Integer.parseInt(this.apiValues.get(29));
         this.weekday = WEEKDAYS.get(weekNumber);
     }
@@ -78,15 +79,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     /**
      * Check if the service (MusicPlayer) is currently running
-     * @param serviceClass
-     *          the service to be check if its running
-     * @return
-     *          true if running, false if not running
+     *
+     * @return true if running, false if not running
      */
-    private boolean isMyServiceRunning(Class<?> serviceClass) {
+    private boolean isMusicServiceRunning() {
         ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
         for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
-            if (serviceClass.getName().equals(service.service.getClassName())) {
+            if (MusicService.class.getName().equals(service.service.getClassName())) {
                 return true;
             }
         }
@@ -100,10 +99,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
      */
     @Override
     public void onClick(View view) {
-        if(view == this.button && !this.isMyServiceRunning(MusicService.class)) {
+        if(view == this.button && !this.isMusicServiceRunning()) {
             startService(new Intent(this, MusicService.class));
 
-        } else if(view == this.button && this.isMyServiceRunning(MusicService.class)){
+        } else if(view == this.button && this.isMusicServiceRunning()){
             stopService(new Intent(this, MusicService.class));
         }
     }

@@ -16,7 +16,7 @@ import com.example.projetcparts_header_navigation.R;
 import com.example.projetcparts_header_navigation.TableContent;
 
 /**
- * Fragment for poping up after add item has been clicked from the TableContent activity
+ * Fragment for popping up after add item has been clicked from the TableContent activity
  */
 public class AddItemFragment extends Fragment {
     private DatabaseHelper database;
@@ -62,8 +62,6 @@ public class AddItemFragment extends Fragment {
 
         return view;
     }
-
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
