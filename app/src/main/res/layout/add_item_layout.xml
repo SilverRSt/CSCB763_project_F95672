@@ -69,7 +69,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/create_id"
-            android:text="@string/create"
+            android:text="@string/buttonCreate"
             android:padding="15dp"
             android:textStyle="bold"
             android:layout_marginEnd="20dp"

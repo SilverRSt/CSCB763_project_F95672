@@ -6,27 +6,75 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Main activity - main/home page
  */
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final Map<Integer, String> WEEKDAYS;
+    static {
+        WEEKDAYS = new HashMap<>();
+        WEEKDAYS.put(1, "Monday");
+        WEEKDAYS.put(2, "Tuesday");
+        WEEKDAYS.put(3, "Wednesday");
+        WEEKDAYS.put(4, "Thursday");
+        WEEKDAYS.put(5, "Friday");
+        WEEKDAYS.put(6, "Saturday");
+        WEEKDAYS.put(7, "Sunday");
+    }
+
     private ImageButton button;
+    private APIConnector connector = new APIConnector();
+    private List<String> apiValues = new ArrayList<>();
+
+    private String date;
+    private String weekday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         this.button = findViewById(R.id.musicButton);
+        TextView currentTime = findViewById(R.id.current_time);
+        TextView currentWeekday = findViewById(R.id.current_weekday);
         this.button.setOnClickListener(this);
+
+        try {
+            this.apiValues = this.connector.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR).get();
+            this.separateJsonData();
+            //this.currentTime.setText(this.apiValues.get(5));
+            currentTime.setText(this.date);
+            currentWeekday.setText(this.weekday);
+
+        } catch (ExecutionException | InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+    private void separateJsonData() {
+        String fullDate = this.apiValues.get(5);
+        this.date = fullDate.split("T")[0].substring(1);
+
+        //int weekNumber = Integer.parseInt(String.valueOf(this.apiValues.get(29).charAt(1)));
+        int weekNumber = Integer.parseInt(this.apiValues.get(29));
+        this.weekday = WEEKDAYS.get(weekNumber);
+    }
+
 
     /**
      * Check if the service (MusicPlayer) is currently running
@@ -68,7 +116,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu, menu);
-
         return super.onCreateOptionsMenu(menu);
     }
 

@@ -1,10 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center" >
+
+    <TextView
+        android:id="@+id/current_weekday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/template_text"
+        android:gravity="center"
+        android:fontFamily="@font/blackjack"
+        android:textSize="45sp"/>
+
+
+    <TextView
+        android:id="@+id/current_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/template_text"
+        android:gravity="center"
+        android:fontFamily="@font/blackjack"
+        android:textSize="25sp"/>
+
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="fill_parent"
@@ -19,7 +45,8 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_music_on"
             android:scaleType="fitCenter"
-            android:background="@drawable/round_button" />
+            android:background="@drawable/round_button"
+            android:contentDescription="@string/musicButtonDesc" />
     </RelativeLayout>
 
 </RelativeLayout>
