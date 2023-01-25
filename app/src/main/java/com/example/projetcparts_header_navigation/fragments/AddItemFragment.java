@@ -23,9 +23,6 @@ import com.example.projetcparts_header_navigation.TableContent;
 public class AddItemFragment extends Fragment {
     private DatabaseHelper database;
 
-    public AddItemFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.add_item_layout, container, false);
@@ -68,13 +65,5 @@ public class AddItemFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-    }
-
-    @Override
-    public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        super.onConfigurationChanged(newConfig);
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-
-        }
     }
 }
