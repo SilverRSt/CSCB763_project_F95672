@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
 <ScrollView android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="match_parent"
     android:scrollbars="none"
     android:id="@+id/scroll_view">
 
@@ -51,8 +51,6 @@
         </TextView>
     </TableRow>
 </TableLayout>
-
-
 </ScrollView>
 
     <FrameLayout
